@@ -14,7 +14,7 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     final HomeController _tabx = Get.put(HomeController());
-    return Scaffold(
+    return _tabx.controller == null ?const SizedBox(): Scaffold(
       appBar: AppBar(
           title: const Text('Hey Shubham'),
           toolbarHeight: 80,
@@ -109,7 +109,8 @@ class HomeView extends GetView<HomeController> {
                     ),
                   ),
                   Expanded(
-                    child: TabBarView(controller: _tabx.controller, children: [
+                    child: TabBarView(
+                      controller: _tabx.controller, children: [
                       AllOffersView(),
                       SingleChildScrollView(
                         child: Container(

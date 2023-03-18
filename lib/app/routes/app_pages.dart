@@ -34,7 +34,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.OFFER,
-      page: () => const OfferView(),
+      page: () => OfferView(),
       binding: OfferBinding(),
     ),
   ];

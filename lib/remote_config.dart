@@ -10,7 +10,7 @@ class RemoteConfigService extends GetxService {
     final  FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
     await remoteConfig.setConfigSettings(RemoteConfigSettings(
       fetchTimeout: const Duration(seconds: 10),
-      minimumFetchInterval:const Duration(seconds: 10),
+      minimumFetchInterval:const Duration(hours: 2),
     ));
     await remoteConfig.fetchAndActivate();
     final jsonString = remoteConfig.getString('dummy_tasks');

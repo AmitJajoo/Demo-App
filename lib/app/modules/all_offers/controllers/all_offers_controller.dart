@@ -2,17 +2,17 @@ import 'package:demo1/app/data/dummy_task_model.dart';
 import 'package:demo1/remote_config.dart';
 import 'package:get/get.dart';
 import 'package:infinite_carousel/infinite_carousel.dart';
-
+enum RequestStatus {LOADING, SUCESS, ERROR}
 class AllOffersController extends GetxController {
   //TODO: Implement AllOffersController
-  late InfiniteScrollController controller;
   final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
-    controller = InfiniteScrollController();
     fetchConfig();
   }
+
+  bool isSuccess =false;
 
   @override
   void onReady() {
@@ -22,13 +22,13 @@ class AllOffersController extends GetxController {
   @override
   void onClose() {
     super.onClose();
-    controller.dispose();
   }
   List<DummyTask> dataList = [];
   Future<void> fetchConfig() async {
-
+    isSuccess = true;
    dataList =await RemoteConfigService.init();
    update();
+   isSuccess = false;
   }
 
   void increment() => count.value++;

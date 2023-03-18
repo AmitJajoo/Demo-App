@@ -64,8 +64,9 @@ class AllOffersView extends GetView<AllOffersController> {
       .toList();
   @override
   Widget build(BuildContext context) {
+    final AllOffersController tabx = Get.put(AllOffersController());
 
-    return SingleChildScrollView(
+    return !tabx.isSuccess ?Center(child: CircularProgressIndicator()) : SingleChildScrollView(
         physics:const AlwaysScrollableScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

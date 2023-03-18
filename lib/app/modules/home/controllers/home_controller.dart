@@ -10,7 +10,7 @@ class HomeController extends GetxController with GetSingleTickerProviderStateMix
     Tab(text: 'My Offers'),
   ];
 
-  late TabController controller;
+   TabController? controller;
   final count = 0.obs;
 
   @override
@@ -26,7 +26,7 @@ class HomeController extends GetxController with GetSingleTickerProviderStateMix
 
   @override
   void onClose() {
-    controller.dispose();
+    controller!.dispose();
     super.onClose();
   }
 
